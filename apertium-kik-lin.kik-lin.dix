@@ -8,6 +8,7 @@
     <sdef n="n"               c="Noun"/>
     <sdef n="np"              c="Proper noun"/>
     <sdef n="v"           c="Verb, lexical"/>
+    <sdef n="cop"             c="Copula"/>
     <sdef n="vbmod"           c="Modal verb"/>
     <sdef n="vaux"            c="Auxiliary verb"/>
     <sdef n="vbser"           c="'To be' verb"/>
@@ -99,8 +100,69 @@
       <!-- Define entries within <e> here. -->
       <e><p><l>house<s n="n"/><s n="sg"/></l><r>house<s n="n"/><s n="sg"/></r></p></e>
 
-      <e><p><l>thi<s n="v"/> thi<s n="v"/></l><r>kozala<s n="v"/></r></p></e>
-      <e><p><l>thi<s n="v"/></l><r>kozala<s n="v"/></r></p></e>
+      <e><p><l>na<s n="pr"/></l><r>na<s n="pr"/></r></p></e>
+
+      <e><p><l>ambĩrĩria<s n="n"/></l><r>ebandeli<s n="n"/></r></p></e>
+      <e><p><l>aĩ<s n="n"/></l><r>lodende<s n="n"/></r></p></e>
+      <e><p><l>ithikiri<s n="n"/></l><r>nkínga<s n="n"/></r></p></e>
+      <e><p><l>bira<s n="n"/></l><r>balé<s n="n"/></r></p></e>
+      <e><p><l>rango<s n="n"/></l><r>ezibele<s n="n"/></r></p></e>
+      <e><p><l>tĩ<s n="n"/></l><r>nzeté<s n="n"/></r></p></e>
+      <e><p><l>rũthi<s n="n"/></l><r>nkósi<s n="n"/></r></p></e>
+      <e><p><l>tunda<s n="n"/></l><r>mbuma<s n="n"/></r></p></e>
+      <e><p><l>ria<s n="n"/></l><r>mabele<s n="n"/></r></p></e>
+      <e><p><l>ria<s n="n"/></l><r>etímá<s n="n"/></r></p></e>
+      <e><p><l>gũrũ<s n="n"/></l><r>lokolo<s n="n"/></r></p></e>
+      <e><p><l>higa<s n="n"/></l><r>libángá<s n="n"/></r></p></e>
+      <e><p><l>rĩma<s n="n"/></l><r>ngómba<s n="n"/></r></p></e>
+      <e><p><l>ndũ<s n="n"/></l><r>moto<s n="n"/></r></p></e>
+      <e><p><l>buku<s n="n"/></l><r>mokandá<s n="n"/></r></p></e>
+      <e><p><l>buku<s n="n"/></l><r>búku<s n="n"/></r></p></e>
+      <e><p><l>timia<s n="n"/></l><r>mwasi<s n="n"/></r></p></e>
+      <e><p><l>bembe<s n="n"/></l><r>lisángó<s n="n"/></r></p></e>
+      <e><p><l>gui<s n="n"/></l><r>mbwá<s n="n"/></r></p></e>
+      <e><p><l>cukuru<s n="n"/></l><r>eyékwelo<s n="n"/></r></p></e>
+      <e><p><l>benjũ<s n="n"/></l><r>ekomele<s n="n"/></r></p></e>
+      <e><p><l>imbo<s n="n"/></l><r>nzembo<s n="n"/></r></p></e>
+      <e><p><l>ũĩ<s n="n"/></l><r>ebale<s n="n"/></r></p></e>
+      <e><p><l>kari<s n="n"/></l><r>mótuka<s n="n"/></r></p></e>
+      <e><p><l>nyamũ<s n="n"/></l><r>nyama<s n="n"/></r></p></e>
+
+      <e><p><l>ega<s n="adj"/></l><r>malámu<s n="adj"/></r></p></e>
+      <e><p><l>nene<s n="adj"/></l><r>monéne<s n="adj"/></r></p></e>
+      <e><p><l>nini<s n="adj"/></l><r>moké<s n="adj"/></r></p></e>
+      <e><p><l>ũru<s n="adj"/></l><r>mabé<s n="adj"/></r></p></e>
+      <e><p><l>thaka<s n="adj"/></l><r>kitóko<s n="adj"/></r></p></e>
+      <e><p><l>erũ<s n="adj"/></l><r>pémbé<s n="adj"/></r></p></e>
+      <e><p><l>irũ<s n="adj"/></l><r>mwíndo<s n="adj"/></r></p></e>
+ 
+      <e><p><l><s n="cop"/></l><r>kozala<s n="v"/></r></p></e>
+      <e><p><l>ihũg<s n="v"/></l><r>kopola<s n="v"/></r></p></e>
+      <e><p><l>heenere<s n="v"/></l><r>kokósa<s n="v"/></r></p></e>
+      <e><p><l>kiny<s n="v"/></l><r>kokóma<s n="v"/></r></p></e>
+      <e><p><l>kũr<s n="v"/></l><r>kokóla<s n="v"/></r></p></e>
+      <e><p><l>ũk<s n="v"/></l><r>kowúta<s n="v"/></r></p></e>
+      <e><p><l>in<s n="v"/></l><r>koyemba<s n="v"/></r></p></e>
+      <e><p><l>thom<s n="v"/></l><r>kotánga<s n="v"/></r></p></e>
+      <e><p><l>gũ<s n="v"/></l><r>kokwéya<s n="v"/></r></p></e>
+      <e><p><l>ũr<s n="v"/></l><r>kokíma<s n="v"/></r></p></e>
+      <e><p><l>ik<s n="v"/></l><r>kobuáka<s n="v"/></r></p></e>
+      <e><p><l>nyit<s n="v"/></l><r>kokwa<s n="v"/></r></p></e>
+      <e><p><l>tin<s n="v"/></l><r>kokáta<s n="v"/></r></p></e>
+      <e><p><l>hanyũk<s n="v"/></l><r>kokíma<s n="v"/></r></p></e>
+      <e><p><l>ikar<s n="v"/></l><r>kofánda<s n="v"/></r></p></e>
+      <e><p><l>rĩ<s n="v"/></l><r>kolia<s n="v"/></r></p></e>
+      <e><p><l>ririkan<s n="v"/></l><r>kobánza<s n="v"/></r></p></e>
+      <e><p><l>ĩcir<s n="v"/></l><r>kobánza<s n="v"/></r></p></e>
+      <e><p><l>ĩtĩk<s n="v"/></l><r>kobánza<s n="v"/></r></p></e>
+      <e><p><l>iy<s n="v"/></l><r>koyiba<s n="v"/></r></p></e>
+      <e><p><l>iy<s n="v"/></l><r>kolamwisa<s n="v"/></r></p></e>
+      <e><p><l>igu<s n="v"/></l><r>koyoka<s n="v"/></r></p></e>
+      <e><p><l>igu<s n="v"/></l><r>kotosa<s n="v"/></r></p></e>
+      <e><p><l>ug<s n="v"/></l><r>koloba<s n="v"/></r></p></e>
+      <e><p><l>rut<s n="v"/></l><r>koyekola<s n="v"/></r></p></e>
+      <e><p><l>rut<s n="v"/></l><r>kokukula<s n="v"/></r></p></e>
+      <e><p><l>thek<s n="v"/></l><r>koseka<s n="v"/></r></p></e>
 
       <e><re>[.\?;:!…¿¶]</re><p><l><s n="sent"/></l><r><s n="sent"/></r></p></e>
       <e><re>,</re>          <p><l><s n="cm"/></l>  <r><s n="cm"/></r></p></e>
