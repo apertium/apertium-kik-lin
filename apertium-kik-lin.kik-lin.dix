@@ -82,6 +82,17 @@
     <sdef n="acr"             c="Acronym"/>
     <sdef n="unc"             c="Uncountable"/>
 
+    <sdef n="cl1"             c="Noun class 1/2"/>
+    <sdef n="cl3"             c="Noun class 3/4"/>
+    <sdef n="cl5"             c="Noun class 5/6"/>
+    <sdef n="cl7"             c="Noun class 7/8"/>
+    <sdef n="cl9"             c="Noun class 9/10"/>
+    <sdef n="cl11"            c="Noun class 11/6"/>
+    <sdef n="cl14"            c="Noun class 14"/>
+    <sdef n="cl15"            c="Noun class 15"/>
+    <sdef n="cl9p10"          c="Kik noun class 9/10"/>
+    <sdef n="cl11p10"         c="Kik noun class 11/10"/>
+
     <sdef n="num"             c="Numeral"/>
     <sdef n="sent"            c="Sentence end"/>
     <sdef n="cm"              c="Comma"/>
@@ -105,32 +116,32 @@
 
       <e lr="RL"><p><l></l> <r>te<s n="neg"/></r></p></e>
 
-      <e><p><l>ambĩrĩria<s n="n"/><s n="cl7"></l><r>ebandeli<s n="n"/></r></p></e>
-      <e><p><l>aĩ<s n="n"/><s n="cl5"></l><r>londende<s n="n"/></r></p></e>
-      <e><p><l>ithikiri<s n="n"/><s n="cl3"></l><r>nkínga<s n="n"/></r></p></e>
-      <e><p><l>bira<s n="n"/><s n="cl3"></l><r>balé<s n="n"/></r></p></e>
-      <e><p><l>rango<s n="n"/><s n="cl3"></l><r>ezibele<s n="n"/></r></p></e>
-      <e><p><l>tĩ<s n="n"/><s n="cl3"></l><r>nzeté<s n="n"/></r></p></e>
-      <e><p><l>rũthi<s n="n"/><s n="cl3"></l><r>nkósi<s n="n"/></r></p></e>
-      <e><p><l>tunda<s n="n"/><s n="cl5"></l><r>mbuma<s n="n"/></r></p></e>
-      <e><p><l>ria<s n="n"/><s n="cl5"></l><r>mabele<s n="n"/></r></p></e>
-      <e><p><l>thanga<s n="n"/><s n="cl3"></l><r>mabele<s n="n"/></r></p></e>
-      <e><p><l>ria<s n="n"/><s n="cl5"></l><r>etímá<s n="n"/></r></p></e>
-      <e><p><l>gũrũ<s n="n"/><s n="cl5"></l><r>lokolo<s n="n"/></r></p></e>
-      <e><p><l>higa<s n="n"/><s n="cl5"></l><r>libángá<s n="n"/></r></p></e>
-      <e><p><l>rĩma<s n="n"/><s n="cl7"></l><r>ngómba<s n="n"/></r></p></e>
-      <e><p><l>ndũ<s n="n"/><s n="cl1"></l><r>moto<s n="n"/></r></p></e>
-      <e><p><l>buku<s n="n"/><s n="cl9p10"></l><r>mokandá<s n="n"/></r></p></e>
-      <e><p><l>buku<s n="n"/><s n="cl9p10"></l><r>búku<s n="n"/></r></p></e>
-      <e><p><l>timia<s n="n"/><s n="cl1"></l><r>mwasi<s n="n"/></r></p></e>
-      <e><p><l>bembe<s n="n"/><s n="cl9p10"></l><r>lisángó<s n="n"/></r></p></e>
-      <e><p><l>gui<s n="n"/><s n="cl9p10"></l><r>mbwá<s n="n"/></r></p></e>
-      <e><p><l>cukuru<s n="n"/><s n="cl9p10"></l><r>eyékwelo<s n="n"/></r></p></e>
-      <e><p><l>benjũ<s n="n"/><s n="cl9p10"></l><r>ekomele<s n="n"/></r></p></e>
-      <e><p><l>imbo<s n="n"/><s n="cl11p10"></l><r>nzembo<s n="n"/></r></p></e>
-      <e><p><l>ũĩ<s n="n"/><s n="cl11p10"></l><r>ebale<s n="n"/></r></p></e>
-      <e><p><l>kari<s n="n"/><s n="cl9p10"></l><r>mótuka<s n="n"/></r></p></e>
-      <e><p><l>nyamũ<s n="n"/><s n="cl9p10"></l><r>nyama<s n="n"/></r></p></e>
+      <e><p><l>ambĩrĩria<s n="n"/><s n="cl7"/></l><r>ebandeli<s n="n"/></r></p></e>
+      <e><p><l>aĩ<s n="n"/><s n="cl5"/></l><r>londende<s n="n"/></r></p></e>
+      <e><p><l>ithikiri<s n="n"/><s n="cl3"/></l><r>nkínga<s n="n"/></r></p></e>
+      <e><p><l>bira<s n="n"/><s n="cl3"/></l><r>balé<s n="n"/></r></p></e>
+      <e><p><l>rango<s n="n"/><s n="cl3"/></l><r>ezibele<s n="n"/></r></p></e>
+      <e><p><l>tĩ<s n="n"/><s n="cl3"/></l><r>nzeté<s n="n"/></r></p></e>
+      <e><p><l>rũthi<s n="n"/><s n="cl3"/></l><r>nkósi<s n="n"/></r></p></e>
+      <e><p><l>tunda<s n="n"/><s n="cl5"/></l><r>mbuma<s n="n"/></r></p></e>
+      <e><p><l>ria<s n="n"/><s n="cl5"/></l><r>mabele<s n="n"/></r></p></e>
+      <e><p><l>thanga<s n="n"/><s n="cl3"/></l><r>mabele<s n="n"/></r></p></e>
+      <e><p><l>ria<s n="n"/><s n="cl5"/></l><r>etímá<s n="n"/></r></p></e>
+      <e><p><l>gũrũ<s n="n"/><s n="cl5"/></l><r>lokolo<s n="n"/></r></p></e>
+      <e><p><l>higa<s n="n"/><s n="cl5"/></l><r>libángá<s n="n"/></r></p></e>
+      <e><p><l>rĩma<s n="n"/><s n="cl7"/></l><r>ngómba<s n="n"/></r></p></e>
+      <e><p><l>ndũ<s n="n"/><s n="cl1"/></l><r>moto<s n="n"/></r></p></e>
+      <e><p><l>buku<s n="n"/><s n="cl9p10"/></l><r>mokandá<s n="n"/></r></p></e>
+      <e><p><l>buku<s n="n"/><s n="cl9p10"/></l><r>búku<s n="n"/></r></p></e>
+      <e><p><l>timia<s n="n"/><s n="cl1"/></l><r>mwasi<s n="n"/></r></p></e>
+      <e><p><l>bembe<s n="n"/><s n="cl9p10"/></l><r>lisángó<s n="n"/></r></p></e>
+      <e><p><l>gui<s n="n"/><s n="cl9p10"/></l><r>mbwá<s n="n"/></r></p></e>
+      <e><p><l>cukuru<s n="n"/><s n="cl9p10"/></l><r>eyékwelo<s n="n"/></r></p></e>
+      <e><p><l>benjũ<s n="n"/><s n="cl9p10"/></l><r>ekomele<s n="n"/></r></p></e>
+      <e><p><l>imbo<s n="n"/><s n="cl11p10"/></l><r>nzembo<s n="n"/></r></p></e>
+      <e><p><l>ũĩ<s n="n"/><s n="cl11p10"/></l><r>ebale<s n="n"/></r></p></e>
+      <e><p><l>kari<s n="n"/><s n="cl9p10"/></l><r>mótuka<s n="n"/></r></p></e>
+      <e><p><l>nyamũ<s n="n"/><s n="cl9p10"/></l><r>nyama<s n="n"/></r></p></e>
 
       <e><p><l>ega<s n="adj"/></l><r>malámu<s n="adj"/></r></p></e>
       <e><p><l>nene<s n="adj"/></l><r>monéne<s n="adj"/></r></p></e>
