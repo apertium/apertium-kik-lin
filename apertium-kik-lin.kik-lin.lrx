@@ -4,13 +4,73 @@
     Add your own rules within <rule> here, using the resources below as a guide 
   -->
 
+
   <rule>
     <match lemma="wind"/>
     <match lemma="power" tags="n.*">
       <select lemma="energía" tags="n.*"/>
     </match>
   </rule>
-</rules>
+
+  <!--
+    This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is preceded by "nyu" (drink).
+  -->
+  <rule>
+    <match lemma="ria" tags="n.*">
+      <select lemma="étimá" tags="n.*"/>
+    </match>
+  </rule>
+
+  <!--
+    This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is preced by "nyu" (drink).
+  -->
+  <rule>
+    <match lemma="nyu" tag ="v.*"/>
+    <match lemma="ria" tags="n.*">
+      <select lemma="mabele" tags="n.*"/>
+    </match>
+  </rule>
+
+  <!--
+    This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is followed by "mata" (creamy/thick).
+  -->
+  <rule>
+    <match lemma="ria" tags="n.*">
+      <select lemma="mabele" tags="n.*"/>
+    </match>
+    <match lemma="mata" tag ="adj.*"/>
+  </rule>
+
+  <!--
+    This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is preceded by "na" (with).
+  -->
+  <rule>
+    <match lemma="na"/>
+    <match lemma="ria" tags="n.*">
+      <select lemma="mabele" tags="n.*"/>
+    </match>
+  </rule>
+  
+<!--
+    This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is preceded by "it" (pour/spill).
+  -->
+  <rule>
+    <match lemma="it" tags="v.*"/>
+    <match lemma="ria" tags="n.*">
+      <select lemma="mabele" tags="n.*"/>
+    </match>
+  </rule>
+
+  <!--
+    This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is followed by "it" (pour/spill). (This could happen if "it" is conjugated in middle voice.)
+  -->
+  <rule>
+    <match lemma="ria" tags="n.*">
+      <select lemma="mabele" tags="n.*"/>
+    </match>
+    <match lemma="it" tags="v.*"/>
+  </rule>
+
 
 <!-- 
 Resources: 

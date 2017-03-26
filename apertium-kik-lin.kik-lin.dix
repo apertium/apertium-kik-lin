@@ -150,7 +150,8 @@
       <e><p><l>thaka<s n="adj"/></l><r>kitóko<s n="adj"/></r></p></e>
       <e><p><l>erũ<s n="adj"/></l><r>pémbé<s n="adj"/></r></p></e>
       <e><p><l>irũ<s n="adj"/></l><r>mwíndo<s n="adj"/></r></p></e>
- 
+      <e><p><l>mata<s n="adj"/></l><r>bololo<s n="adj"/></r></p></e> 
+
       <e><p><l>rĩ<s n="cop"/></l><r>kozala<s n="v"/></r></p></e>
       <e><p><l>ihũg<s n="v"/></l><r>kopola<s n="v"/></r></p></e>
       <e><p><l>heenere<s n="v"/></l><r>kokósa<s n="v"/></r></p></e>
@@ -179,6 +180,8 @@
       <e><p><l>rut<s n="v"/></l><r>koyekola<s n="v"/></r></p></e>
       <e><p><l>rut<s n="v"/></l><r>kokukula<s n="v"/></r></p></e>
       <e><p><l>thek<s n="v"/></l><r>koseka<s n="v"/></r></p></e>
+      <e><p><l>it<s n="v"/></l><r>kotoka<s n="v"/></r></p></e>
+      <e><p><l>nyu<s n="v"/></l><r>komela<s n="v"/></r></p></e>
 
       <e><re>[.\?;:!…¿¶]</re><p><l><s n="sent"/></l><r><s n="sent"/></r></p></e>
       <e><re>,</re>          <p><l><s n="cm"/></l>  <r><s n="cm"/></r></p></e>

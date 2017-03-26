@@ -10,8 +10,43 @@
       <select lemma="energía" tags="n.*"/>
     </match>
   </rule>
+
+  <rule>
+    <match lemma="kozala"/>
+    <match lemma="kokíma">
+      <select lemma="hanyũk"/>
+    </match>
+  </rule>
+
+  <rule>
+    <match lemma="kozala"/>
+    <match lemma="kokíma">
+      <select lemma="hanyũk"/>
+    </match>
+  </rule>
 </rules>
 
+  <!--
+    This rule selects "ria" (milk) as the translation of "mabele" (milk/sand) when it is preceded by "bololo" (sour).
+  -->
+  <rule>
+    <match lemma="bololo" tag ="adj.*"/>
+    <match lemma="mabele" tags="n.*">
+      <select lemma="ria" tags="n.*"/>
+    </match>
+  </rule>
+  
+  <!--
+    This rule selects "ria" (milk) as the translation of "mabele" (milk/sand) when it is preceded by "kotoka" (pour).
+  -->
+  <rule>
+    <match lemma="kotoka" tags="v.*"/>
+    <match lemma="mabele" tags="n.*">
+      <select lemma="it" tags="n.*"/>
+    </match>
+  </rule>
+
+</rules>
 <!-- 
 Resources: 
     http://wiki.apertium.org/wiki/How_to_get_started_with_lexical_selection_rules
