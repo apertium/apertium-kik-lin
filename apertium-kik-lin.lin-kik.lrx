@@ -16,7 +16,7 @@
   <rule>
     <match lemma="kotoka" tags="v.*"/>
     <match lemma="mabele" tags="n.*">
-      <select lemma="it" tags="n.*"/>
+      <select lemma="ria" tags="n.*"/>
     </match>
   </rule>
 
