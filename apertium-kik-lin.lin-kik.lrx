@@ -1,25 +1,37 @@
 <rules>
 
   <!--
-    This rule selects "ria" (milk) as the translation of "mabele" (milk/sand) when it is preceded by "bololo" (sour).
+    default translation of "thanga" (sand) for "mabele" (milk/sand)
+    Test sentence 1: na mabele ("from the earth/sand") (a bit odd to use mabele here, but from
+        the Bible)
+    Test sentence 2: nabuákí mabele ("I throw sand")
+  -->
+  <rule weight="0.8">
+    <match lemma="mabele" tags="n.*">
+      <select lemma="thanga" tags="n.*"/>
+    </match>
+  </rule>
+
+  <!--
+    This rule selects "ria" (milk) as the translation of "mabele" (milk/sand) when it is preceded
+     by "bololo" (sour), "kotoka" (pour), or "komela" (drink). Note that unlike the other 
+     direction, "na" (preposition) is not included in the rule since it can be translated in    
+     many different contexts.
+     Test sentence 1: bololo mabele ("sour milk")
+     Test sentence 2: atokí mabele ("He pours milk")
+     Test sentence 3: tomelí mabele ("We drink milk")
   -->
   <rule>
-    <match lemma="bololo" tag ="adj.*"/>
+    <or>
+        <match lemma="bololo" tag ="adj.*"/>
+        <match lemma="kotoka" tags="v.*"/>
+        <match lemma="komela" tags="v.*"/>
+    </or>
     <match lemma="mabele" tags="n.*">
       <select lemma="ria" tags="n.*"/>
     </match>
   </rule>
   
-  <!--
-    This rule selects "ria" (milk) as the translation of "mabele" (milk/sand) when it is preceded by "kotoka" (pour).
-  -->
-  <rule>
-    <match lemma="kotoka" tags="v.*"/>
-    <match lemma="mabele" tags="n.*">
-      <select lemma="ria" tags="n.*"/>
-    </match>
-  </rule>
-
 </rules>
 <!-- 
 Resources: 
