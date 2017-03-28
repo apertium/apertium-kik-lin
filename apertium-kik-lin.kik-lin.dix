@@ -70,7 +70,8 @@
     <sdef n="pret"            c="Preterite"/>
     <sdef n="pp"              c="Perfect participle"/>
     <sdef n="pprs"            c="Present participle"/>
-    <sdef n="pasv"            c="Passive"/>
+    <sdef n="pass"            c="Passive"/>
+    <sdef n="mid"             c="Middle voice"/>
     <sdef n="actv"            c="Active voice"/>
 
     <sdef n="sint"            c="Synthetic (of adjectives)"/>
@@ -182,6 +183,8 @@
       <e><p><l>thek<s n="v"/></l><r>koseka<s n="v"/></r></p></e>
       <e><p><l>it<s n="v"/></l><r>kotoka<s n="v"/></r></p></e>
       <e><p><l>nyu<s n="v"/></l><r>komela<s n="v"/></r></p></e>
+      <e><p><l>ur<s n="v"/></l><r>kobéta<s n="v"/></r></p></e>
+      <e><p><l>hũr<s n="v"/></l><r>kobéta<s n="v"/></r></p></e>
 
       <e><re>[.\?;:!…¿¶]</re><p><l><s n="sent"/></l><r><s n="sent"/></r></p></e>
       <e><re>,</re>          <p><l><s n="cm"/></l>  <r><s n="cm"/></r></p></e>

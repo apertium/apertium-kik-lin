@@ -39,7 +39,7 @@
   -->
   <rule weight="0.8">
     <match lemma="kobéta" tags="v.*">
-      <select lemma="ur" tags="n.*"/>
+      <select lemma="ur" tags="v.*"/>
     </match>
   </rule>
 
@@ -53,9 +53,36 @@
       <select lemma="hũr" tags="v.*"/>
     </match>
     <or>
-        <match tag ="n.*"/>
-        <match tag ="prn.*"/>
+        <match tags="n.*"/>
+        <match tags="prn.*"/>
     </or>
+  </rule>
+
+  <!--
+    default translation of "hanyũk" (run) for "kokíma" (run/run away)
+  -->
+  <rule weight="0.8">
+    <match lemma="kokíma" tags="v.*">
+      <select lemma="hanyũk" tags="v.*"/>
+    </match>
+  </rule>
+
+  <!--
+    default translation of "ikar" (sit) for "kofánda" (sit/live(reside))
+  -->
+  <rule weight="0.8">
+    <match lemma="kofánda" tags="v.*">
+      <select lemma="ikar" tags="v.*"/>
+    </match>
+  </rule>
+
+  <!--
+    default translation of "ĩcir" (think) for "kobánza" (think/remember)
+  -->
+  <rule weight="0.8">
+    <match lemma="kobánza" tags="v.*">
+      <select lemma="ĩcir" tags="v.*"/>
+    </match>
   </rule>
 
 </rules>

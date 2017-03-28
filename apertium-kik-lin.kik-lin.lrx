@@ -1,13 +1,13 @@
 <rules>
 
   <!--
-    default translation of "étimá" (pond) for "ria" (milk/pond)
-    Test sentence 1:
-    Test sentence 2: iria-inĩ ("in the lake")
+    default translation of "etímá" (pond) for "ria" (milk/pond)
+    Test sentence 1: iria inene ("the big lake")
+    Test sentence 2: iriainĩ ("in the lake")
   -->
   <rule weight="0.8">
     <match lemma="ria" tags="n.*">
-      <select lemma="étimá" tags="n.*"/>
+      <select lemma="etímá" tags="n.*"/>
     </match>
   </rule>
 
@@ -43,6 +43,24 @@
     </or>
     <match lemma="ria" tags="n.*">
       <select lemma="mabele" tags="n.*"/>
+    </match>
+  </rule>
+
+  <!--
+    default translation of "koyoka" (hear) for "igu" (hear/obey)
+  -->
+  <rule weight="0.8">
+    <match lemma="igu" tags="v.*">
+      <select lemma="koyoka" tags="v.*"/>
+    </match>
+  </rule>
+
+  <!--
+    default translation of "koyekola" (learn) for "rut" (learn/remove)
+  -->
+  <rule weight="0.8">
+    <match lemma="rut" tags="v.*">
+      <select lemma="koyekola" tags="v.*"/>
     </match>
   </rule>
 
