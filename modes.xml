@@ -20,7 +20,7 @@
       <program name="lt-proc -b">
         <file name="kik-lin.autobil.bin"/>
       </program>
-      <program name="lrx-proc">
+      <program name="lrx-proc -m">
         <file name="kik-lin.autolex.bin"/>
       </program>
       <program name="apertium-transfer -b">
@@ -64,7 +64,7 @@
       <program name="lt-proc -b">
         <file name="lin-kik.autobil.bin"/>
       </program>
-      <program name="lrx-proc">
+      <program name="lrx-proc -m">
         <file name="lin-kik.autolex.bin"/>
       </program>
       <program name="apertium-transfer -b">
