@@ -3,7 +3,7 @@
   <!--
     default translation of "étimá" (pond) for "ria" (milk/pond)
     Test sentence 1:
-    Test sentence 2:
+    Test sentence 2: iria-inĩ ("in the lake")
   -->
   <rule weight="0.8">
     <match lemma="ria" tags="n.*">
@@ -15,8 +15,8 @@
     This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is followed
     by "mata" (creamy/thick) or "it" (pour/spill)  (the latter could happen if "it" is conjugated
     in middle voice).
-    Test sentence 1:
-    Test sentence 2:
+    Test sentence 1: iria nĩrĩitĩkire ("the milk spilled")
+    Test sentence 2: iria imata ("creamy milk")
   -->
   <rule>
     <match lemma="ria" tags="n.*">
@@ -31,9 +31,9 @@
   <!--
     This rule selects "mabele" (milk) as the translation of "ria" (milk/pond) when it is preceded
     by "it" (pour/spill), "nyu" (drink), "na" (with).
-    Test sentence 1:
-    Test sentence 2:
-    Test sentence 3:
+    Test sentence 1: nĩnjitire iria ("I poured milk")
+    Test sentence 2: nĩnyuire iria ("I drank milk")
+    Test sentence 3: na iria ("with milk")
   -->
   <rule>
     <or>

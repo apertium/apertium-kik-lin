@@ -31,7 +31,33 @@
       <select lemma="ria" tags="n.*"/>
     </match>
   </rule>
-  
+
+  <!--
+    default translation of "ur" (rain) for "kobéta" (rain/beat)
+    Test sentence 1:  
+    Test sentence 2:
+  -->
+  <rule weight="0.8">
+    <match lemma="kobéta" tags="v.*">
+      <select lemma="ur" tags="n.*"/>
+    </match>
+  </rule>
+
+  <!--
+    This rule selects "hũr" (beat) as the translation of "kobéta" (rain/beat) when followed by a noun
+     Test sentence 1:
+     Test sentence 2:
+  -->
+  <rule>
+    <match lemma="kobéta" tags="v.*">
+      <select lemma="hũr" tags="v.*"/>
+    </match>
+    <or>
+        <match tag ="n.*"/>
+        <match tag ="prn.*"/>
+    </or>
+  </rule>
+
 </rules>
 <!-- 
 Resources: 
