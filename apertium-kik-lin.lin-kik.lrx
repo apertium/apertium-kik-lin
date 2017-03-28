@@ -34,8 +34,8 @@
 
   <!--
     default translation of "ur" (rain) for "kobéta" (rain/beat)
-    Test sentence 1:  
-    Test sentence 2:
+    Test sentence 1: ebétí lelo ("It rains today")
+    Test sentence 2: ekobéta ("It will rain")
   -->
   <rule weight="0.8">
     <match lemma="kobéta" tags="v.*">
@@ -45,8 +45,8 @@
 
   <!--
     This rule selects "hũr" (beat) as the translation of "kobéta" (rain/beat) when followed by a noun
-     Test sentence 1:
-     Test sentence 2:
+     Test sentence 1: abétí nyama ("He beats the animal")
+     Test sentence 2: nakobéta yo ("I will beat you")
   -->
   <rule>
     <match lemma="kobéta" tags="v.*">
