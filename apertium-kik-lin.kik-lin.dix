@@ -104,6 +104,9 @@
     <sdef n="lquot"           c="Left quote"/>
     <sdef n="rquot"           c="Right quote"/>
 
+    <sdef n="aa"              c="Animate (lin)"/>
+    <sdef n="nn"              c="Inanimate (lin)"/>
+
     <sdef n="compound-only-L" c="May only be the left-side of a compound"/>
     <sdef n="compound-R"      c="May be the right-side of a compound, or a full word"/>
   </sdefs>
@@ -185,6 +188,11 @@
       <e><p><l>nyu<s n="v"/></l><r>komela<s n="v"/></r></p></e>
       <e><p><l>ur<s n="v"/></l><r>kobéta<s n="v"/></r></p></e>
       <e><p><l>hũr<s n="v"/></l><r>kobéta<s n="v"/></r></p></e>
+
+      <e><p><l>pro<s n="prn"/><s n="pers"/><s n="p2"/><s n="sg"/></l><r>yó<s n="prn"/><s n="pers"/><s n="p2"/><s n="sg"/><s n="aa"/></r></p></e>
+
+     
+      <e><p><l>ũmũthĩ><s n="adv"/></l><r>lelo<s n="adv"/></r></p></e>
 
       <e><re>[.\?;:!…¿¶]</re><p><l><s n="sent"/></l><r><s n="sent"/></r></p></e>
       <e><re>,</re>          <p><l><s n="cm"/></l>  <r><s n="cm"/></r></p></e>
