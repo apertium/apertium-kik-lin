@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transfer default="chunk">
-  <section-def-cats>
+ <section-def-cats>
     <def-cat n="nom">
       <cat-item tags="n.*"/>
     </def-cat>
     <def-cat n="sent">
       <cat-item tags="sent"/>
+    </def-cat>
+    <def-cat n="noun_loc">
+      <cat-item tags="n.*.*.loc"/>
+    </def-cat>
+    <def-cat n="verb">
+      <cat-item tags="v.*"/>
+      <cat-item tags="cop.*"/>
     </def-cat>
   </section-def-cats>
 
@@ -13,10 +20,66 @@
     <def-attr n="a_cas">
       <attr-item tags="nom"/>
     </def-attr>
+    <def-attr n="type_word">
+      <attr-item tags="n"/>
+      <attr-item tags="pr"/>
+      <attr-item tags="v"/>
+      <attr-item tags="adj"/>
+      <attr-item tags="cop"/>
+    </def-attr>
+    <def-attr n="noun_class">
+      <attr-item tags="cl1"/>
+      <attr-item tags="cl3"/>
+      <attr-item tags="cl5"/>
+      <attr-item tags="cl7"/>
+      <attr-item tags="cl9"/>
+      <attr-item tags="cl9p6"/>
+      <attr-item tags="cl9p10"/>
+      <attr-item tags="cl11p6"/>
+      <attr-item tags="cl11p10"/>
+      <attr-item tags="cl12p6"/>
+      <attr-item tags="cl12p13"/>
+      <attr-item tags="cl14"/>
+      <attr-item tags="cl15"/>
+    </def-attr>
+    <def-attr n="number">
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
+    </def-attr>
+    <def-attr n="tense">
+      <attr-item tags="pres"/>
+      <attr-item tags="currpast"/>
+      <attr-item tags="nearpast"/>
+      <attr-item tags="rempast"/>
+      <attr-item tags="nearfut"/>
+      <attr-item tags="remfut"/>
+      <attr-item tags="seq"/>
+      <attr-item tags="past"/>
+      <attr-item tags="urp"/>
+      <attr-item tags="dpres"/>
+      <attr-item tags="fut"/>
+    </def-attr>
+    <def-attr n="aspect">
+      <attr-item tags="hab"/>
+      <attr-item tags="compl"/>
+      <attr-item tags="prog"/>
+      <attr-item tags="proc"/>
+    </def-attr>
+    <def-attr n="animacy">
+      <attr-item tags="aa"/>
+      <attr-item tags="nn"/>
+    </def-attr>
+    <def-attr n="person">
+      <attr-item tags="p1"/>
+      <attr-item tags="p2"/>
+      <attr-item tags="p3"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="number"/>
+    <def-var n="nclass_agreement"/>
+    <def-var n="aspect_verb"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -25,6 +88,106 @@
             <var n="number"/>
             <lit v=""/>
           </let>
+    </def-macro>
+   <def-macro n="set_tense" npar="1">
+      <choose>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" side="sl" part="tense"/>
+              <lit-tag v="past"/>
+            </equal>
+          </test>
+          <let>
+            <clip pos="1" side="tl" part="tense"/>
+            <lit-tag v="rempast"/>
+          </let>
+          <let>
+            <var n="aspect_verb"/>
+            <lit-tag v="compl"/>
+          </let>
+        </when>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" side="sl" part="tense"/>
+              <lit-tag v="fut"/>
+            </equal>
+          </test>
+          <let>
+            <clip pos="1" side="tl" part="tense"/>
+            <lit-tag v="remfut"/>
+          </let>
+        </when>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" side="sl" part="tense"/>
+              <lit-tag v="dpres"/>
+            </equal>
+          </test>
+          <let>
+            <clip pos="1" side="tl" part="tense"/>
+            <lit-tag v="pres"/>
+          </let>
+          <let>
+            <var n="aspect_verb"/>
+            <lit-tag v="proc"/>
+          </let>
+        </when>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" side="sl" part="tense"/>
+              <lit-tag v="urp"/>
+            </equal>
+          </test>
+          <let>
+            <clip pos="1" side="tl" part="tense"/>
+            <lit-tag v="nearpast"/>
+          </let>
+          <let>
+            <var n="aspect_verb"/>
+            <lit-tag v="compl"/>
+          </let>
+        </when>
+      </choose>
+    </def-macro>
+    <def-macro n="set_default_agreement_no_overt_subject" npar="1">
+      <choose>
+        <when>
+          <test>
+            <or>
+              <equal>
+                <clip pos="1" side="sl" part="person"/>
+                <lit-tag v="p1"/> 
+              </equal>
+              <equal>
+                <clip pos="1" side="sl" part="person"/>
+                <lit-tag v="p2"/> 
+              </equal>
+              <equal>
+                <clip pos="1" side="sl" part="animacy"/>
+                <lit-tag v="aa"/>
+              </equal>
+            </or>
+          </test>
+          <let>
+            <var n="nclass_agreement"/>
+            <lit-tag v="cl1"/> 
+          </let>
+        </when>
+        <otherwise>
+          <let>
+            <var n="nclass_agreement"/>
+            <lit-tag v="cl15"/>
+          </let>
+          <let>
+            <clip pos="1" side="tl" part="number"/>
+            <lit-tag v="sg"/>
+          </let>
+        </otherwise>
+      </choose>
     </def-macro>
   </section-def-macros>
 
@@ -46,6 +209,35 @@
         </out>
       </action>
     </rule>
+    <rule>
+       <pattern>
+          <pattern-item n="verb"/>
+       </pattern>
+       <action>
+          <call-macro n="set_tense">
+             <with-param pos="1"/>
+          </call-macro>
+          <call-macro n="set_default_agreement_no_overt_subject">
+             <with-param pos="1"/>
+          </call-macro>
+          <out>
+            <chunk name="verb" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="verb" /></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="lem"/>
+                <clip pos="1" side="tl" part="type_word"/>
+                <clip pos="1" side="tl" part="tense"/>
+                <var n="aspect_verb"/>
+                <clip pos="1" side="tl" part="person"/>
+                <var n="nclass_agreement"/>
+                <clip pos="1" side="tl" part="number"/> 
+              </lu>
+            </chunk>
+          </out>
+       </action>
+     </rule>
   </section-rules>
 </transfer>
 

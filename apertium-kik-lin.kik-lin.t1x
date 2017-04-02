@@ -7,16 +7,71 @@
     <def-cat n="sent">
       <cat-item tags="sent"/>
     </def-cat>
+    <def-cat n="noun_loc">
+      <cat-item tags="n.*.*.loc"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
     <def-attr n="a_cas">
       <attr-item tags="nom"/>
     </def-attr>
+    <def-attr n="type_word">
+      <attr-item tags="n"/>
+      <attr-item tags="pr"/>
+      <attr-item tags="v"/>
+      <attr-item tags="adj"/>
+    </def-attr>
+    <def-attr n="noun_class">
+      <attr-item tags="cl1"/>
+      <attr-item tags="cl3"/>
+      <attr-item tags="cl5"/>
+      <attr-item tags="cl7"/>
+      <attr-item tags="cl9"/>
+      <attr-item tags="cl9p6"/>
+      <attr-item tags="cl9p10"/>
+      <attr-item tags="cl11p6"/>
+      <attr-item tags="cl11p10"/>
+      <attr-item tags="cl12p6"/>
+      <attr-item tags="cl12p13"/>
+      <attr-item tags="cl14"/>
+      <attr-item tags="cl15"/>
+    </def-attr>
+    <def-attr n="number">
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
+    </def-attr>
+    <def-attr n="tense">
+      <attr-item tags="pres"/>
+      <attr-item tags="currpast"/>
+      <attr-item tags="nearpast"/>
+      <attr-item tags="rempast"/>
+      <attr-item tags="nearfut"/>
+      <attr-item tags="remfut"/>
+      <attr-item tags="seq"/>
+      <attr-item tags="past"/>
+      <attr-item tags="urp"/>
+      <attr-item tags="dpres"/>
+      <attr-item tags="fut"/>
+    </def-attr>
+    <def-attr n="aspect">
+      <attr-item tags="hab"/>
+      <attr-item tags="compl"/>
+    </def-attr>
+    <def-attr n="animacy">
+      <attr-item tags="aa"/>
+      <attr-item tags="nn"/>
+    </def-attr>
+    <def-attr n="person">
+      <attr-item tags="p1"/>
+      <attr-item tags="p2"/>
+      <attr-item tags="p3"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="number"/>
+    <def-var n="temp"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -44,6 +99,31 @@
             </lu>
           </chunk>
         </out>
+      </action>
+    </rule>
+    <rule comment="change Kikuyu locative to Lingala preposition">
+      <pattern>
+        <pattern-item n="noun_loc"/>
+      </pattern>
+      <action>
+         <out>
+          <chunk name="noun_locative" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="loc"/></tag>
+            </tags>
+           <lu>
+             <lit v="na"/>
+             <lit-tag v="pr"/>
+           </lu>
+           <b />
+           <lu>
+             <clip pos="1" side="tl" part="lem"/>
+             <clip pos="1" side="tl" part="type_word"/>
+             <clip pos="1" side="tl" part="noun_class"/>
+             <clip pos="1" side="tl" part="number"/>
+           </lu>
+          </chunk>
+         </out>
       </action>
     </rule>
   </section-rules>
