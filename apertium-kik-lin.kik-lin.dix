@@ -121,14 +121,16 @@
       <e r="RL"><p><l></l> <r>te<s n="neg"/></r></p></e>
 
       <e><p><l>ambĩrĩria<s n="n"/><s n="cl7"/></l><r>ebandeli<s n="n"/><s n="cl7"/></r></p></e>
-      <e><p><l>aĩ<s n="n"/><s n="cl5"/></l><r>londende<s n="n"/><s n="cl11"/></r></p></e>
+      <e><p><l>aĩ<s n="n"/><s n="cl5"/><s n="sg"/></l><r>londende<s n="n"/><s n="cl11"/><s n="sg"/></r></p></e>
+      <e><p><l>aĩ<s n="n"/><s n="cl5"/><s n="pl"/></l><r>londende<s n="n"/><s n="cl11"/><s n="sg"/></r></p></e>
       <e><p><l>ithikiri<s n="n"/><s n="cl3"/></l><r>nkínga<s n="n"/><s n="cl9"/></r></p></e>
       <e><p><l>bira<s n="n"/><s n="cl3"/></l><r>balé<s n="n"/></r></p></e>
       <e><p><l>rango<s n="n"/><s n="cl3"/></l><r>ezibele<s n="n"/><s n="cl7"/></r></p></e>
       <e><p><l>tĩ<s n="n"/><s n="cl3"/></l><r>nzeté<s n="n"/><s n="cl9"/></r></p></e>
       <e><p><l>rũthi<s n="n"/><s n="cl3"/></l><r>nkósi<s n="n"/><s n="cl9"/></r></p></e>
       <e><p><l>tunda<s n="n"/><s n="cl5"/></l><r>mbuma<s n="n"/><s n="cl9"/></r></p></e>
-      <e><p><l>ria<s n="n"/><s n="cl5"/></l><r>mabele<s n="n"/><s n="cl5"/></r></p></e>
+      <e><p><l>ria<s n="n"/><s n="cl5"/><s n="pl"/></l><r>mabele<s n="n"/><s n="cl5"/><s n="pl"/></r></p></e>
+      <e><p><l>ria<s n="n"/><s n="cl5"/><s n="sg"/></l><r>mabele<s n="n"/><s n="cl5"/><s n="pl"/></r></p></e>
       <e><p><l>thanga<s n="n"/><s n="cl3"/></l><r>mabele<s n="n"/><s n="cl5"/></r></p></e>
       <e><p><l>ria<s n="n"/><s n="cl5"/></l><r>etímá<s n="n"/><s n="cl7"/></r></p></e>
       <e><p><l>gũrũ<s n="n"/><s n="cl5"/></l><r>lokolo<s n="n"/><s n="cl11"/></r></p></e>
