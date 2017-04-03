@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transfer default="chunk">
   <section-def-cats>
+
     <def-cat n="nom">
       <cat-item tags="n.*"/>
     </def-cat>
+
     <def-cat n="sent">
       <cat-item tags="sent"/>
     </def-cat>
+
     <def-cat n="noun_loc">
       <cat-item tags="n.*.*.loc"/>
     </def-cat>
+
+    <def-cat n="verb">
+      <cat-item tags="v.*"/>
+      <cat-item tags="cop.*"/>
+    </def-cat>
+
   </section-def-cats>
 
   <section-def-attrs>
     <def-attr n="a_cas">
       <attr-item tags="nom"/>
     </def-attr>
+
     <def-attr n="type_word">
       <attr-item tags="n"/>
       <attr-item tags="pr"/>
       <attr-item tags="v"/>
       <attr-item tags="adj"/>
     </def-attr>
+
     <def-attr n="noun_class">
       <attr-item tags="cl1"/>
       <attr-item tags="cl3"/>
@@ -37,17 +48,20 @@
       <attr-item tags="cl14"/>
       <attr-item tags="cl15"/>
     </def-attr>
+
     <def-attr n="number">
       <attr-item tags="sg"/>
       <attr-item tags="pl"/>
       <attr-item tags="sp"/>
     </def-attr>
+
     <def-attr n="tense">
       <attr-item tags="pres"/>
       <attr-item tags="currpast"/>
       <attr-item tags="nearpast"/>
       <attr-item tags="rempast"/>
       <attr-item tags="nearfut"/>
+      <attr-item tags="currfut"/>
       <attr-item tags="remfut"/>
       <attr-item tags="seq"/>
       <attr-item tags="past"/>
@@ -55,14 +69,17 @@
       <attr-item tags="dpres"/>
       <attr-item tags="fut"/>
     </def-attr>
+
     <def-attr n="aspect">
       <attr-item tags="hab"/>
       <attr-item tags="compl"/>
     </def-attr>
+
     <def-attr n="animacy">
       <attr-item tags="aa"/>
       <attr-item tags="nn"/>
     </def-attr>
+
     <def-attr n="person">
       <attr-item tags="p1"/>
       <attr-item tags="p2"/>
@@ -71,19 +88,103 @@
   </section-def-attrs>
 
   <section-def-vars>
-    <def-var n="temp"/>
+    <def-var n="animacy_agreement"/>
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="test" npar="1">
+    <def-macro n="set_tense" npar="1"> <!--Change tense tags-->
+      <choose>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" side="sl" part="tense"/>
+              <lit-tag v="rempast"/>
+            </equal>
+          </test>
           <let>
-            <var n="number"/>
-            <lit v=""/>
+            <clip pos="1" side="tl" part="tense"/>
+            <lit-tag v="past"/>
           </let>
+        </when>
+        <when>
+          <test>
+            <or>
+              <equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="seq"/>
+              </equal>
+              <equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="nearpast"/>
+              </equal>
+              <equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="currpast"/>
+              </equal>
+            </or>
+          </test>
+          <let>
+            <clip pos="1" side="tl" part="tense"/>
+            <lit-tag v="urp"/>
+          </let>
+        </when>
+        <when>
+          <test>
+            <or>
+              <equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="currfut"/>
+              </equal>
+              <equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="remfut"/>
+              </equal>
+            </or>
+          </test>
+          <let>
+            <clip pos="1" side="tl" part="tense"/>
+            <lit-tag v="fut"/>
+          </let>
+        </when>
+      </choose>
+    </def-macro>
+
+    <def-macro n="set_default_animacy_no_overt_subject" npar="1">
+      <choose>
+        <when>
+          <test>
+            <or>
+              <equal>
+                <clip pos="1" side="sl" part="person"/>
+                <lit-tag v="p1"/>
+              </equal>
+              <equal>
+                <clip pos="1" side="sl" part="person"/>
+                <lit-tag v="p2"/>
+              </equal>
+            </or>
+          </test>
+          <let>
+            <var n="animacy_agreement"/>
+            <lit-tag v="aa"/>
+          </let>
+        </when>
+        <otherwise>
+          <let>
+            <var n="animacy_agreement"/>
+            <lit-tag v="nn"/>
+          </let>
+          <let>
+            <clip pos="1" side="tl" part="number"/>
+            <lit-tag v="sp"/>
+          </let>
+        </otherwise>
+      </choose>
     </def-macro>
   </section-def-macros>
 
   <section-rules>
+    
     <rule comment="REGLA: SENT">
       <pattern>
         <pattern-item n="sent"/>
@@ -101,6 +202,7 @@
         </out>
       </action>
     </rule>
+
     <rule comment="change Kikuyu locative to Lingala preposition">
       <pattern>
         <pattern-item n="noun_loc"/>
@@ -124,6 +226,35 @@
            </lu>
           </chunk>
          </out>
+      </action>
+    </rule>
+
+    <rule comment="basic verb transfer">
+      <pattern>
+        <pattern-item n="verb"/>
+      </pattern>
+      <action>
+        <call-macro n="set_tense">
+          <with-param pos="1"/>
+        </call-macro>
+        <call-macro n="set_default_animacy_no_overt_subject">
+          <with-param pos="1"/>
+        </call-macro>
+        <out>
+          <chunk name="verb" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="verb" /></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <lit-tag v="v"/> <!--No cop tag in Lingala-->
+              <clip pos="1" side="tl" part="tense"/>
+              <clip pos="1" side="tl" part="person"/>
+              <clip pos="1" side="tl" part="number"/>
+              <var n="animacy_agreement"/>
+            </lu>
+          </chunk>
+        </out>
       </action>
     </rule>
   </section-rules>

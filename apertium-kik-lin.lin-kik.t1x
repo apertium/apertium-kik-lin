@@ -4,15 +4,18 @@
     <def-cat n="nom">
       <cat-item tags="n.*"/>
     </def-cat>
+
     <def-cat n="sent">
       <cat-item tags="sent"/>
     </def-cat>
+
     <def-cat n="noun_loc">
       <cat-item tags="n.*.*.loc"/>
     </def-cat>
+
     <def-cat n="verb">
       <cat-item tags="v.*"/>
-      <cat-item tags="cop.*"/>
+      <cat-item tags="cop.*"/> <!-- Perhaps should be its own category on this side since has no aspect?-->
     </def-cat>
   </section-def-cats>
 
@@ -20,6 +23,7 @@
     <def-attr n="a_cas">
       <attr-item tags="nom"/>
     </def-attr>
+
     <def-attr n="type_word">
       <attr-item tags="n"/>
       <attr-item tags="pr"/>
@@ -27,6 +31,7 @@
       <attr-item tags="adj"/>
       <attr-item tags="cop"/>
     </def-attr>
+
     <def-attr n="noun_class">
       <attr-item tags="cl1"/>
       <attr-item tags="cl3"/>
@@ -42,17 +47,20 @@
       <attr-item tags="cl14"/>
       <attr-item tags="cl15"/>
     </def-attr>
+
     <def-attr n="number">
       <attr-item tags="sg"/>
       <attr-item tags="pl"/>
       <attr-item tags="sp"/>
     </def-attr>
+
     <def-attr n="tense">
       <attr-item tags="pres"/>
       <attr-item tags="currpast"/>
       <attr-item tags="nearpast"/>
       <attr-item tags="rempast"/>
       <attr-item tags="nearfut"/>
+      <attr-item tags="currfut"/>
       <attr-item tags="remfut"/>
       <attr-item tags="seq"/>
       <attr-item tags="past"/>
@@ -60,16 +68,19 @@
       <attr-item tags="dpres"/>
       <attr-item tags="fut"/>
     </def-attr>
+
     <def-attr n="aspect">
       <attr-item tags="hab"/>
       <attr-item tags="compl"/>
       <attr-item tags="prog"/>
       <attr-item tags="proc"/>
     </def-attr>
+
     <def-attr n="animacy">
       <attr-item tags="aa"/>
       <attr-item tags="nn"/>
     </def-attr>
+
     <def-attr n="person">
       <attr-item tags="p1"/>
       <attr-item tags="p2"/>
@@ -83,13 +94,7 @@
   </section-def-vars>
 
   <section-def-macros>
-    <def-macro n="test" npar="1">
-          <let>
-            <var n="number"/>
-            <lit v=""/>
-          </let>
-    </def-macro>
-   <def-macro n="set_tense" npar="1">
+   <def-macro n="set_tense" npar="1"> <!--Change tense tags and set default aspects -->
       <choose>
         <when>
           <test>
@@ -153,6 +158,7 @@
         </when>
       </choose>
     </def-macro>
+
     <def-macro n="set_default_agreement_no_overt_subject" npar="1">
       <choose>
         <when>
@@ -209,6 +215,7 @@
         </out>
       </action>
     </rule>
+ 
     <rule>
        <pattern>
           <pattern-item n="verb"/>
