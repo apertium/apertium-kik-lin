@@ -33,6 +33,10 @@
       <attr-item tags="adj"/>
     </def-attr>
 
+    <def-attr n="negative">
+      <attr-item tags="neg"/>
+    </def-attr>
+
     <def-attr n="noun_class">
       <attr-item tags="cl1"/>
       <attr-item tags="cl3"/>
@@ -89,9 +93,33 @@
 
   <section-def-vars>
     <def-var n="animacy_agreement"/>
+    <def-var n="negative_agreement"/>
   </section-def-vars>
 
   <section-def-macros>
+    <def-macro n="set_negative" npar="1"> <!--Set neg tag-->
+      <choose>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" side="sl" part="negative"/>
+              <lit-tag v="neg"/>
+            </equal>
+          </test>
+          <let>
+            <var n="negative_agreement"/>
+            <lit-tag v="neg"/>
+          </let>
+        </when>
+        <otherwise>
+          <let>
+            <var n="negative_agreement"/>
+            <lit-tag v=""/>
+          </let>
+        </otherwise>
+      </choose>
+    </def-macro>
+
     <def-macro n="set_tense" npar="1"> <!--Change tense tags-->
       <choose>
         <when>
@@ -186,10 +214,32 @@
   <section-rules>
     
     <rule comment="REGLA: SENT">
-      <pattern>
-        <pattern-item n="sent"/>
-      </pattern>
-      <action>
+        <pattern>
+          <pattern-item n="sent"/>
+        </pattern>
+        <action>
+         <choose>
+         <when>
+           <test>
+             <equal>
+               <var n="negative_agreement"/>
+               <lit-tag v="neg"/>
+             </equal>
+           </test>
+           <out>
+             <chunk name="negative" case="caseFirstWord">
+               <tags>
+                 <tag><lit-tag v="neg"/></tag>
+               </tags>
+               <b />
+               <lu>
+                 <lit v="te"/>
+                 <lit-tag v="neg"/>
+               </lu>
+             </chunk>
+            </out>
+          </when>
+        </choose>
         <out>
           <chunk name="sent" case="caseFirstWord">
             <tags>
@@ -234,6 +284,9 @@
         <pattern-item n="verb"/>
       </pattern>
       <action>
+        <call-macro n="set_negative">
+          <with-param pos="1"/>
+        </call-macro>
         <call-macro n="set_tense">
           <with-param pos="1"/>
         </call-macro>
