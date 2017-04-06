@@ -86,6 +86,10 @@
       <attr-item tags="p2"/>
       <attr-item tags="p3"/>
     </def-attr>
+
+    <def-attr n="negation">
+      <attr-item tags="neg"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>
@@ -216,7 +220,7 @@
       </action>
     </rule>
  
-    <rule>
+    <rule comment="basic verb transfer"> <!--TODO: If tense is present, no aspect is added. If PoS is cop, aspect is (incorrectly) added (unless present, of course) -->
        <pattern>
           <pattern-item n="verb"/>
        </pattern>
@@ -236,6 +240,7 @@
                 <clip pos="1" side="tl" part="lem"/>
                 <clip pos="1" side="tl" part="type_word"/>
                 <clip pos="1" side="tl" part="tense"/>
+                <clip pos="1" side="tl" part="negation" /> <!-- TODO Is this the right order? -->
                 <var n="aspect_verb"/>
                 <clip pos="1" side="tl" part="person"/>
                 <var n="nclass_agreement"/>
