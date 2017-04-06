@@ -98,7 +98,7 @@
   </section-def-vars>
 
   <section-def-macros>
-   <def-macro n="set_tense" npar="1"> <!--Change tense tags and set default aspects -->
+   <def-macro n="set_tense" npar="1"> <!--Change tense tags and set default aspects (note: no aspect for present)-->
       <choose>
         <when>
           <test>
@@ -161,6 +161,20 @@
           </let>
         </when>
       </choose>
+      <choose>
+        <when>
+          <test>
+            <equal>
+              <clip pos="1" side="tl" part="type_word"/>
+              <lit-tag v="cop"/>
+            </equal>
+          </test>
+          <let>
+            <var n="aspect_verb"/>
+            <lit v=""/>
+          </let>
+        </when>
+      </choose>
     </def-macro>
 
     <def-macro n="set_default_agreement_no_overt_subject" npar="1">
@@ -220,7 +234,7 @@
       </action>
     </rule>
  
-    <rule comment="basic verb transfer"> <!--TODO: If tense is present, no aspect is added. If PoS is cop, aspect is (incorrectly) added (unless present, of course) -->
+    <rule comment="basic verb transfer"> <!--TODO:  If PoS is cop, aspect is (incorrectly) added (unless present, of course) -->
        <pattern>
           <pattern-item n="verb"/>
        </pattern>
@@ -240,8 +254,8 @@
                 <clip pos="1" side="tl" part="lem"/>
                 <clip pos="1" side="tl" part="type_word"/>
                 <clip pos="1" side="tl" part="tense"/>
-                <clip pos="1" side="tl" part="negation" /> <!-- TODO Is this the right order? -->
                 <var n="aspect_verb"/>
+                <clip pos="1" side="tl" part="negation" />
                 <clip pos="1" side="tl" part="person"/>
                 <var n="nclass_agreement"/>
                 <clip pos="1" side="tl" part="number"/> 
