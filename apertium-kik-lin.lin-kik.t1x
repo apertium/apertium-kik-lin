@@ -249,7 +249,7 @@
       </action>
     </rule>
  
-    <rule comment="basic verb transfer"> <!--TODO:  If PoS is cop, aspect is (incorrectly) added (unless present, of course) -->
+    <rule comment="basic verb transfer">
        <pattern>
           <pattern-item n="verb"/>
        </pattern>
