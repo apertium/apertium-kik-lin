@@ -13,6 +13,10 @@
       <cat-item tags="n.*.*.loc"/>
     </def-cat>
 
+    <def-cat n="noun">
+      <cat-item tags="n.*"/>
+    </def-cat>
+
     <def-cat n="verb">
       <cat-item tags="v.*"/>
       <cat-item tags="cop.*"/> <!-- Perhaps should be its own category on this side since has no aspect?-->
@@ -213,6 +217,17 @@
         </otherwise>
       </choose>
     </def-macro>
+
+    <def-macro n="set_nounclass_agreement_overt_subject" npar="2">
+         <let>
+           <var n="nclass_agreement"/>
+           <clip pos="1" side="tl" part="noun_class"/>
+         </let> 
+         <let>
+           <clip pos="2" side="tl" part="number"/>
+           <clip pos="1" side="tl" part="number"/>
+         </let>
+    </def-macro>
   </section-def-macros>
 
   <section-rules>
@@ -259,6 +274,46 @@
                 <clip pos="1" side="tl" part="person"/>
                 <var n="nclass_agreement"/>
                 <clip pos="1" side="tl" part="number"/> 
+              </lu>
+            </chunk>
+          </out>
+       </action>
+     </rule>
+  
+     <rule comment="verb transfer with overt subject">
+       <pattern>
+         <pattern-item n="noun"/>
+         <pattern-item n="verb"/>
+       </pattern>
+       <action>
+         <call-macro n="set_tense">
+           <with-param pos="2"/>
+         </call-macro>
+         <call-macro n="set_nounclass_agreement_overt_subject">
+            <with-param pos="1"/>
+            <with-param pos="2"/>
+         </call-macro>
+         <out>
+            <chunk name="verb" case="caseFirstWord">
+              <tags>
+                <tag><lit-tag v="verb" /></tag>
+              </tags>
+              <lu>
+                <clip pos="1" side="tl" part="lem"/>
+                <clip pos="1" side="tl" part="type_word"/>
+                <clip pos="1" side="tl" part="noun_class"/>
+                <clip pos="1" side="tl" part="number"/>
+              </lu>
+              <b />
+              <lu>
+                <clip pos="2" side="tl" part="lem"/>
+                <clip pos="2" side="tl" part="type_word"/>
+                <clip pos="2" side="tl" part="tense"/>
+                <var n="aspect_verb"/>
+                <clip pos="2" side="tl" part="negation" />
+                <clip pos="2" side="tl" part="person"/>
+                <var n="nclass_agreement"/>
+                <clip pos="2" side="tl" part="number"/> 
               </lu>
             </chunk>
           </out>
