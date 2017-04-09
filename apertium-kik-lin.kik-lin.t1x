@@ -14,9 +14,18 @@
       <cat-item tags="n.*.*.loc"/>
     </def-cat>
 
+    <def-cat n = "connective">
+      <cat-item tags="conn.*"/>
+      <cat-item tags="assoc.*"/>
+    </def-cat>
+
     <def-cat n="verb">
       <cat-item tags="v.*"/>
       <cat-item tags="cop.*"/>
+    </def-cat>
+
+    <def-cat n="adjective">
+      <cat-item tags="adj.*"/>
     </def-cat>
 
   </section-def-cats>
@@ -31,6 +40,7 @@
       <attr-item tags="pr"/>
       <attr-item tags="v"/>
       <attr-item tags="adj"/>
+      <attr-item tags="conn"/>
     </def-attr>
 
     <def-attr n="negative">
@@ -74,6 +84,10 @@
       <attr-item tags="fut"/>
     </def-attr>
 
+    <def-attr n="mood">
+      <attr-item tags="imp"/>
+    </def-attr>
+
     <def-attr n="aspect">
       <attr-item tags="hab"/>
       <attr-item tags="compl"/>
@@ -94,6 +108,7 @@
   <section-def-vars>
     <def-var n="animacy_agreement"/>
     <def-var n="negative_agreement"/>
+    <def-var n="adj_num_agreement"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -210,37 +225,73 @@
       </choose>
     </def-macro>
 
+    <def-macro n="set_adj_num_var" npar="1">
+      <choose>
+        <when>
+          <test>
+            <or> <!--If the lemma is one of the four variable adjectives, keep the number-->
+              <equal>
+                <clip pos="1" side="tl" part="lem"/>
+                <lit v="monéne"/>
+              </equal>
+              <equal>
+                <clip pos="1" side="tl" part="lem"/>
+                <lit v="molaí"/>
+              </equal>
+              <equal>
+                <clip pos="1" side="tl" part="lem"/>
+                <lit v="moké"/>
+              </equal>
+              <equal>
+                <clip pos="1" side="tl" part="lem"/>
+                <lit v="mokúsé"/>
+              </equal>
+            </or>
+          </test>
+          <let>
+            <var n="adj_num_agreement"/>
+            <clip pos="1" side="tl" part="number"/>
+          </let>
+        </when>
+        <otherwise> <!--Else discard it-->
+          <let>
+            <var n="adj_num_agreement"/>
+            <lit v=""/>
+          </let>
+        </otherwise>
+      </choose>
+    </def-macro>
+
   </section-def-macros>
 
   <section-rules>
-    
     <rule comment="REGLA: SENT">
         <pattern>
           <pattern-item n="sent"/>
         </pattern>
         <action>
          <choose>
-         <when>
-           <test>
-             <equal>
-               <var n="negative_agreement"/>
-               <lit-tag v="neg"/>
-             </equal>
-           </test>
-           <out>
-             <chunk name="negative" case="caseFirstWord">
-               <tags>
-                 <tag><lit-tag v="neg"/></tag>
-               </tags>
-               <b />
-               <lu>
-                 <lit v="te"/>
+           <when>
+             <test>
+               <equal>
+                 <var n="negative_agreement"/>
                  <lit-tag v="neg"/>
-               </lu>
-             </chunk>
-            </out>
-          </when>
-        </choose>
+               </equal>
+             </test>
+             <out>
+               <chunk name="negative" case="caseFirstWord">
+                 <tags>
+                   <tag><lit-tag v="neg"/></tag>
+                 </tags>
+                 <b />
+                 <lu>
+                   <lit v="te"/>
+                   <lit-tag v="neg"/>
+                 </lu>
+               </chunk>
+              </out>
+            </when>
+          </choose>
         <out>
           <chunk name="sent" case="caseFirstWord">
             <tags>
@@ -280,6 +331,48 @@
       </action>
     </rule>
 
+    <rule comment="Remove extraneous tags when transfering associative to connective">
+      <pattern>
+        <pattern-item n="connective"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="conn_chunk" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="conn"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="type_word"/>
+            </lu>
+          </chunk>
+        </out>
+       </action>
+     </rule>
+
+    <rule comment="basic adjective transfer">
+      <pattern>
+        <pattern-item n="adjective"/>
+      </pattern>
+      <action>
+        <call-macro n="set_adj_num_var">
+          <with-param pos="1"/>
+        </call-macro>
+        <out>
+          <chunk name="adjective" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag v="adj"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="type_word"/>
+              <var n="adj_num_agreement"/> <!--Set to null if invariable-->
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+
     <rule comment="basic verb transfer">
       <pattern>
         <pattern-item n="verb"/>
@@ -294,21 +387,45 @@
         <call-macro n="set_default_animacy_no_overt_subject">
           <with-param pos="1"/>
         </call-macro>
-        <out>
-          <chunk name="verb" case="caseFirstWord">
-            <tags>
-              <tag><lit-tag v="verb" /></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lem"/>
-              <lit-tag v="v"/> <!--No cop tag in Lingala-->
-              <clip pos="1" side="tl" part="tense"/>
-              <clip pos="1" side="tl" part="person"/>
-              <clip pos="1" side="tl" part="number"/>
-              <var n="animacy_agreement"/>
-            </lu>
-          </chunk>
-        </out>
+        <choose>
+          <when> <!-- Imperative -->
+            <test>
+              <equal>
+                <clip pos="1" side="tl" part = "mood" />
+                <lit-tag v="imp"/>
+              </equal>
+            </test>
+            <out>
+              <chunk name="verb" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="verb" /></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lem" />
+                  <lit-tag v="v"/>
+                  <clip pos="1" side="tl" part="mood" />
+                </lu>
+              </chunk>
+            </out>
+          </when>
+          <otherwise>
+            <out>
+              <chunk name="verb" case="caseFirstWord">
+                <tags>
+                  <tag><lit-tag v="verb" /></tag>
+                </tags>
+                <lu>
+                  <clip pos="1" side="tl" part="lem"/>
+                  <lit-tag v="v"/> <!--No cop tag in Lingala-->
+                  <clip pos="1" side="tl" part="tense"/>
+                  <clip pos="1" side="tl" part="person"/>
+                  <clip pos="1" side="tl" part="number"/>
+                  <var n="animacy_agreement"/>
+                </lu>
+              </chunk>
+            </out>
+          </otherwise>
+        </choose>
       </action>
     </rule>
   </section-rules>
