@@ -5,6 +5,11 @@
       <cat-item tags="n.*"/>
     </def-cat>
 
+    <def-cat n = "connective">
+      <cat-item tags="conn.*"/>
+      <cat-item tags="assoc.*"/>
+    </def-cat>
+    
     <def-cat n="sent">
       <cat-item tags="sent"/>
     </def-cat>
@@ -15,6 +20,10 @@
 
     <def-cat n="noun">
       <cat-item tags="n.*"/>
+    </def-cat>
+    
+    <def-cat n="adjective">
+      <cat-item tags="adj.*"/>
     </def-cat>
 
     <def-cat n="verb">
@@ -249,6 +258,34 @@
       </action>
     </rule>
  
+    <rule comment="basic adjective transfer">
+       <pattern>
+          <pattern-item n="noun"/>
+          <pattern-item n="adjective/>
+       </pattern>
+       <action>
+          <out>
+            <chunk name="nominal" case="caseFirstWord">
+               <tags>
+                  <tag><lit-tag v ="nominal" /></tag>
+               </tags>
+              <lu>
+                <clip pos="1" side="tl" part="lem"/>
+                <clip pos="1" side="tl" part="type_word"/>
+                <clip pos="1" side="tl" part="noun_class"/>
+                <clip pos="1" side="tl" part="number"/>
+              </lu>
+              <b />
+              <lu>
+                <clip pos="2" side="tl" part="lem"/>
+                <clip pos="2" side="tl" part="type_word"/>
+                <clip pos="1" side="tl" part="noun_class"/>
+                <clip pos="1" side="tl" part="number"/>
+              </lu>              
+           </out>
+        </action>
+    </rule>
+    
     <rule comment="basic verb transfer">
        <pattern>
           <pattern-item n="verb"/>
@@ -279,7 +316,44 @@
           </out>
        </action>
      </rule>
-  
+     
+     <rule comment="transfer of connective/associative">
+       <pattern>
+         <pattern-item n="noun"/>
+         <pattern-item n="connective"/>
+         <pattern-item n="noun"/>
+       </pattern>
+       <action>
+         <out>
+            <chunk name="nominal" case="caseFirstWord">
+            <tags>
+              <tag><lit-tag n="nominal" /></tag>
+            </tags>
+            <lu>
+                <clip pos="1" side="tl" part="lem"/>
+                <clip pos="1" side="tl" part="type_word"/>
+                <clip pos="1" side="tl" part="noun_class"/>
+                <clip pos="1" side="tl" part="number"/>
+            </lu>
+            <b />
+            <lu>
+                <lit v="a"/>
+                <lit-tag v="assoc"/>
+                <clip pos="1" side="tl" part="noun_class"/>
+                <clip pos="1" side="tl" part="number"/>
+            </lu>
+            <b />
+            <lu>
+                <clip pos="3" side="tl" part="lem"/>
+                <clip pos="3" side="tl" part="type_word"/>
+                <clip pos="3" side="tl" part="noun_class"/>
+                <clip pos="3" side="tl" part="number"/>
+            </lu>          
+            </chunk>
+         </out>
+       </action>
+     </rule>
+     
      <rule comment="verb transfer with overt subject">
        <pattern>
          <pattern-item n="noun"/>
