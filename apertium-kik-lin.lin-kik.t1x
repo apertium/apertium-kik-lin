@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transfer default="chunk">
  <section-def-cats>
+    <def-cat n="determiner"/>
+      <cat-item tags="det.dem.*/>
+    </def-cat>
+    
     <def-cat n="nom">
       <cat-item tags="n.*"/>
     </def-cat>
-
-    <def-cat n = "connective">
+    
+    <def-cat n="connective">
       <cat-item tags="conn.*"/>
       <cat-item tags="assoc.*"/>
     </def-cat>
@@ -37,6 +41,10 @@
       <attr-item tags="nom"/>
     </def-attr>
 
+    <def-attr n="mood">
+      <attr-item tags="imp"/>
+    </def-attr>
+    
     <def-attr n="type_word">
       <attr-item tags="n"/>
       <attr-item tags="pr"/>
@@ -261,7 +269,7 @@
     <rule comment="basic adjective transfer">
        <pattern>
           <pattern-item n="noun"/>
-          <pattern-item n="adjective/>
+          <pattern-item n="adjective"/>
        </pattern>
        <action>
           <out>
@@ -286,6 +294,73 @@
         </action>
     </rule>
     
+    <rule comment="basic determiner transfer">
+       <pattern>
+          <pattern-item n="determiner"/>
+          <pattern-item n="noun"/>
+       </pattern>
+       <choose>
+         <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="lem"/>
+                  <lit v="óyo"/>
+               </equal>
+            </test>
+            <let>
+               <var n="demonstrative_type"/>
+               <lit-tag v="proxdem"/>
+            </let>
+         </when>
+         <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="lem"/>
+                  <lit v="wâná"/>
+               </equal>
+            </test>
+            <let>
+               <var n="demonstrative_type"/>
+               <lit-tag v="distdem"/>
+            </let>
+         </when>
+         <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="lem"/>
+                  <lit v="yangó"/>
+               </equal>
+            </test>
+            <let>
+               <var n="demonstrative_type"/>
+               <lit-tag v="anadem"/>
+            </let>
+         </when>
+       </choose>    
+       <action>
+          <out>
+            <chunk name="nominal" case="caseFirstWord">
+               <tags>
+                  <tag><lit-tag v ="nominal" /></tag>
+               </tags>
+              <lu>
+                <clip pos="2" side="tl" part="lem"/>
+                <clip pos="2" side="tl" part="type_word"/>
+                <clip pos="2" side="tl" part="noun_class"/>
+                <clip pos="2" side="tl" part="number"/>
+              </lu>
+              <b />
+              <lu>
+                <clip pos="1" side="tl" part="lem"/>
+                <lit-tag v="prn"/>
+                <var n="demonstrative_type"/>
+                <clip pos="2" side="tl" part="noun_class"/>
+                <clip pos="2" side="tl" part="number"/>
+              </lu>              
+           </out>
+        </action>
+    </rule>
+    
     <rule comment="basic verb transfer">
        <pattern>
           <pattern-item n="verb"/>
@@ -297,6 +372,27 @@
           <call-macro n="set_default_agreement_no_overt_subject">
              <with-param pos="1"/>
           </call-macro>
+          <when>
+          <test>
+             <equal>
+                <clip pos="1" side="tl" part="mood"/>
+                <lit-tag v="imp"/>
+             </equal>
+          </test>
+          <out>
+            <chunk name="imperative" case="caseFirstWord">
+               <tags>
+                  <tag><lit-tag v="verb" /></tag>
+                  <tag><lit-tag v="imperative" /></tag>
+               </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <lit-tag v="v"/>
+              <lit-tag v="imp"/>
+            </lu>
+          </out>
+          </when>
+          <otherwise>
           <out>
             <chunk name="verb" case="caseFirstWord">
               <tags>
@@ -314,6 +410,7 @@
               </lu>
             </chunk>
           </out>
+          </otherwise>
        </action>
      </rule>
      
