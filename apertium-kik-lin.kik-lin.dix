@@ -175,8 +175,8 @@
       <e><p><l>thana<s n="n"/><s n="cl7"/></l><r>esanga<s n="n"/><s n="cl7"/></r></p></e>
       <e><p><l>roto<s n="n"/><s n="cl7"/></l><r>ndóto<s n="n"/><s n="cl9"/></r></p></e>
       <e><p><l>myoyo<s n="n"/><s n="cl9"/></l><r>lobíko<s n="n"/><s n="cl11"/></r></p></e>
+      <e><p><l>thĩ<s n="n"/><s n="cl9p10"/></l><r>mokili<s n="n"/><s n="cl3"/></r></p></e>
 
-      <e><p><l>thĩ<s n="n"/><s n="prop"/></l><r>mokili<s n="n"/><s n="cl3"/></r></p></e>
       <e><p><l>Ngai<s n="n"/><s n="prop"/></l><r>Nzambe<s n="n"/><s n="prop"/></r></p></e>
       <e><p><l>Mwathani<s n="n"/><s n="prop"/></l><r>Yawe<s n="n"/><s n="prop"/></r></p></e>
       <e><p><l>Edeni<s n="n"/><s n="prop"/></l><r>Edene<s n="n"/><s n="prop"/></r></p></e>
@@ -304,6 +304,10 @@
       <e><p><l>nana<s n="num"/></l><r>mwambe<s n="num"/></r></p></e>
       <e><p><l>kenda<s n="num"/></l><r>libwá<s n="num"/></r></p></e>
       <e><p><l>kũmi<s n="num"/></l><r>zómi<s n="num"/></r></p></e>
+
+      <e><p><l>pro<s n="prn"/><s n="dem"/></l><r>óyo<s n="det"/><s n="dem"/></r></p></e>
+      <e><p><l>pro<s n="prn"/><s n="dem"/></l><r>wâná<s n="det"/><s n="dem"/></r></p></e>
+      <e><p><l>pro<s n="prn"/><s n="dem"/></l><r>yangó<s n="det"/><s n="dem"/></r></p></e>
 
       <e><re>[.\?;:!…¿¶]</re><p><l><s n="sent"/></l><r><s n="sent"/></r></p></e>
       <e><re>,</re>          <p><l><s n="cm"/></l>  <r><s n="cm"/></r></p></e>

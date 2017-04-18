@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transfer default="chunk">
  <section-def-cats>
-    <def-cat n="determiner"/>
-      <cat-item tags="det.dem.*/>
+    <def-cat n="determiner">
+      <cat-item tags="prn.dem."/>
+      <cat-item tags="det.*"/>
     </def-cat>
     
     <def-cat n="nom">
@@ -10,7 +11,7 @@
     </def-cat>
     
     <def-cat n="connective">
-      <cat-item tags="conn.*"/>
+      <cat-item tags="conn"/>
       <cat-item tags="assoc.*"/>
     </def-cat>
     
@@ -116,6 +117,7 @@
   <section-def-vars>
     <def-var n="nclass_agreement"/>
     <def-var n="aspect_verb"/>
+    <def-var n="demonstrative_type"/>
   </section-def-vars>
 
   <section-def-macros>
@@ -289,74 +291,77 @@
                 <clip pos="2" side="tl" part="type_word"/>
                 <clip pos="1" side="tl" part="noun_class"/>
                 <clip pos="1" side="tl" part="number"/>
-              </lu>              
+              </lu>
+            </chunk>              
            </out>
         </action>
     </rule>
     
     <rule comment="basic determiner transfer">
        <pattern>
-          <pattern-item n="determiner"/>
           <pattern-item n="noun"/>
+          <pattern-item n="determiner"/>
        </pattern>
+       <action>
        <choose>
          <when>
             <test>
                <equal>
-                  <clip pos="1" side="sl" part="lem"/>
+                  <clip pos="2" side="sl" part="lem"/>
                   <lit v="óyo"/>
                </equal>
             </test>
             <let>
                <var n="demonstrative_type"/>
-               <lit-tag v="proxdem"/>
+               <lit-tag v="prox"/>
             </let>
          </when>
          <when>
             <test>
                <equal>
-                  <clip pos="1" side="sl" part="lem"/>
+                  <clip pos="2" side="sl" part="lem"/>
                   <lit v="wâná"/>
                </equal>
             </test>
             <let>
                <var n="demonstrative_type"/>
-               <lit-tag v="distdem"/>
+               <lit-tag v="dist"/>
             </let>
          </when>
          <when>
             <test>
                <equal>
-                  <clip pos="1" side="sl" part="lem"/>
+                  <clip pos="2" side="sl" part="lem"/>
                   <lit v="yangó"/>
                </equal>
             </test>
             <let>
                <var n="demonstrative_type"/>
-               <lit-tag v="anadem"/>
+               <lit-tag v="ana"/>
             </let>
          </when>
        </choose>    
-       <action>
           <out>
             <chunk name="nominal" case="caseFirstWord">
                <tags>
                   <tag><lit-tag v ="nominal" /></tag>
                </tags>
               <lu>
-                <clip pos="2" side="tl" part="lem"/>
-                <clip pos="2" side="tl" part="type_word"/>
-                <clip pos="2" side="tl" part="noun_class"/>
-                <clip pos="2" side="tl" part="number"/>
+                <clip pos="1" side="tl" part="lem"/>
+                <clip pos="1" side="tl" part="type_word"/>
+                <clip pos="1" side="tl" part="noun_class"/>
+                <clip pos="1" side="tl" part="number"/>
               </lu>
               <b />
               <lu>
-                <clip pos="1" side="tl" part="lem"/>
+                <clip pos="2" side="tl" part="lem"/>
                 <lit-tag v="prn"/>
+                <lit-tag v="dem"/>
                 <var n="demonstrative_type"/>
-                <clip pos="2" side="tl" part="noun_class"/>
-                <clip pos="2" side="tl" part="number"/>
-              </lu>              
+                <clip pos="1" side="tl" part="noun_class"/>
+                <clip pos="1" side="tl" part="number"/>
+              </lu>     
+           </chunk>         
            </out>
         </action>
     </rule>
@@ -372,6 +377,7 @@
           <call-macro n="set_default_agreement_no_overt_subject">
              <with-param pos="1"/>
           </call-macro>
+          <choose>
           <when>
           <test>
              <equal>
@@ -390,6 +396,7 @@
               <lit-tag v="v"/>
               <lit-tag v="imp"/>
             </lu>
+            </chunk>
           </out>
           </when>
           <otherwise>
@@ -411,6 +418,7 @@
             </chunk>
           </out>
           </otherwise>
+          </choose>
        </action>
      </rule>
      
@@ -424,7 +432,7 @@
          <out>
             <chunk name="nominal" case="caseFirstWord">
             <tags>
-              <tag><lit-tag n="nominal" /></tag>
+              <tag><lit-tag v="nominal" /></tag>
             </tags>
             <lu>
                 <clip pos="1" side="tl" part="lem"/>
