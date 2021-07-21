@@ -1,0 +1,12 @@
+[-4G-yM15M2Th#0] ^unknown<unknown>{^*âi$}$
+[/-4G-yM15M2Th]
+[-eiNOUjGHR3k#0] ^sent<SENT>{^.<sent>$}$
+[/-eiNOUjGHR3k]
+[HGhvxfMnY9Hu#0] ^default<default>{^,<cm>$}$
+[/HGhvxfMnY9Hu]
+[K0dBpe6jjGqE#0] ^default<default>{^,<cm>$}$
+[/K0dBpe6jjGqE]
+[Ovj_8H8byYCM#0] ^sent<SENT>{^!<sent>$}$
+[/Ovj_8H8byYCM]
+[bsdw4_lumGYx#0] ^sent<SENT>{^;<sent>$}$
+[/bsdw4_lumGYx]

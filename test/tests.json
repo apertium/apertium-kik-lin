@@ -1,0 +1,10 @@
+{
+    "kik-lin": {
+        "input": "kik-lin-input.txt",
+        "mode": "kik-lin"
+    },
+    "lin-kik": {
+        "input": "lin-kik-input.txt",
+        "mode": "lin-kik"
+    }
+}

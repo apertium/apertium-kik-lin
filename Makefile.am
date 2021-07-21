@@ -2,7 +2,6 @@
 ## Makefile for Kikuyu--Lingala
 ###############################################################################
 
-VERSION=0.1.0
 LANG1=kik
 LANG2=lin
 PREFIX1=$(LANG1)-$(LANG2)
@@ -241,11 +240,4 @@ clean-local:
 ###############################################################################
 
 test: all
-	echo "house" | apertium -d . kik-lin | tee .test-mt
-	@echo "house" > .test-ref
-	@diff .test-ref .test-mt
-	echo "house" | apertium -d . lin-kik | tee .test-mt
-	@echo "house" > .test-ref
-	@diff .test-ref .test-mt
-	@rm .test-ref .test-mt
-
+	apertium-regtest test
