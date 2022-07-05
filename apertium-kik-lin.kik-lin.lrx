@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <rules>
 
   <!--
@@ -23,7 +24,7 @@
       <select lemma="mabele" tags="n.*"/>
     </match>
     <or>
-        <match lemma="mata" tag ="adj.*"/>
+        <match lemma="mata" tags="adj.*"/>
         <match lemma="it" tags="v.*"/>
     </or>
   </rule>
